@@ -1,114 +1,84 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-  
-      <link rel="stylesheet" href=" {{url_for('static', filename='css/owl.carousel.min.css')}}">
-  
-      <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.min.css')}}">
-    
-  
-      <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
- 
-    {% if title %}
-        <title> {{ title }} - Flask Templates</title>
-    {% else %}
-        <title> Flask Templates Demo</title>
-    {% endif %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="widths=width-device, initial-scale=1">
+        {% if title %}
+            <title> {{ title }} - Flask Templates</title>
+        {% else %}
+            <title> Flask Templates Demo</title>
+        {% endif %}
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+         rel="stylesheet" 
+         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
+         crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container text-center">
+            <div class="col-md-4">
 
-    
-  
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
- 
-      
-  </head>
-  <body>
-    
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-
-    
-    <header class="site-navbar site-navbar-target py-4" role="banner">
-
-        <div class="container">
-          <div class="row align-items-center position-relative">
-
-            <div class="col-3">
-              <div class="site-logo">
-                <a href="{{url_for('index')}}" class="font-weight-bold text-white">Brand</a>
-              </div>
             </div>
-
-            <div class="col-9  text-right">
-              
-
-              <span class="d-inline-block d-lg-block"><a href="#" class="text-black site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
-
-              
-
-              <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="about.html" class="nav-link">About</a></li>
-                  <li><a href="services.html" class="nav-link">Services</a></li>
-                  <li><a href="blog.html" class="nav-link">Blog</a></li>
-                  <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            
-          </div>
-        </div>
-
-      </header>
-            
-            
-         
-            
-        <hr>
-         <!-- Beginning of flash message -->
-    <div class="row">
-        <div class="text-center col-md-12">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="text-secondary" role="alert">
-                         {{message}}
+            <!--link-->
+            <div class="row text-center">
+                <div class="col-md-4">     
+                <hr>
+                <nav class="navbar navbar-dark bg-dark fixed-top">
+                    <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Password Reset Feature</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Password Reset Feature</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith%}
+                        <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            {% if current_user.is_authenticated %}
+                                <a class="nav-link"  href="{{ url_for('logout') }}">Logout</a>
+                            {% else %}
+                                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                            {% endif %}
+                            </li>
+                            <li class="nav-item">
+                            <a  class="nav-link" href="{{ url_for('request_password_reset') }}">Request Password Reset</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url_for('register')}}">Register</a> 
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </nav>
+                </div>
+        <!--begining of flash message-->
+        <div class="row text-center">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                             <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
         </div>
-   </div>
-    <!-- End of flash message -->
-        <div>
+        <!--END OF FLASH MESSAGE-->
+        <div style="margin-top: 60px;">
             {% block content %}
-            <!-- child template will go here -->
             {% endblock %}
         </div>
-
-      
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <script src="{{url_for('static', filename='js/jquery-3.3.1.min.js')}}"></script> 
-    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-    <script src="{{url_for('static', filename='js/jquery.sticky.js')}}"></script>
-    <script src="{{url_for('static', filename='js/main.js')}}"></script>
-  </body>
+            
+            
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" 
+         crossorigin="anonymous"></script>
+    </body>
 </html>
