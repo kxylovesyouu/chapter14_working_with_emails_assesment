@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+<div class="row">
+    <div class="col-md-4">
+        <!-- Empty Column -->
+    </div>
+
+    
+   
+        
+        <div class="col-md-4 image1">
+            <form action="" method="post" novalidate >
+                {{ form.hidden_tag() }}
+                <p>
+                    <h1 class=" text-center">Login</h1 >
+                    {{ form.username.label }} <br>
+                    {{ form.username(size=32)}}<br>
+                    {% for error in form.username.errors %}
+                    <span style="color: red;">
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+    
+                </p>
+             
+                <p>
+                    {{ form.password.label }} <br>
+                    {{ form.password(size=32)}}<br>
+                    {% for error in form.password.errors %}
+                    <span style="color: red;">
+                        {{ error }}
+                    </span>
+                    {% endfor %}
+                    
+                </p>
+             
+                <p>
+                  <p> New Here? <a href="{{ url_for ('register') }}">Register Now</a></p> 
+                </p>
+                <p>
+                    {{ form.remember_me() }} {{ form.remember_me.label}}            
+                </p>
+                 <p>
+                  
+                   
+                    
+                </p>
+             
+                
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
+            <div class="text-sm">
+                <p>
+                    Forgot Password?
+                    <a href="{{url_for('request_password_reset')}}"> Reset Here</a>
+                </p>
+            </div>
+              
+        </div>
+        <div class="col-md-4">
+            <!-- Empty Column -->
+        </div>
+    </div>
+    {% endblock %} 
+
+    </div>
+
+    
