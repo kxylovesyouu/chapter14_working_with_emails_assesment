@@ -12,6 +12,8 @@
          rel="stylesheet" 
          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" 
          crossorigin="anonymous">
+         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+         
     </head>
     <body>
         <div class="container text-center">
@@ -62,7 +64,7 @@
                 {% with messages = get_flashed_messages() %}
                     {% if messages %}
                         {% for message in messages %}
-                             <div class="alert alert-success" role="alert">
+                             <div class="alert alert-primary" role="alert">
                                 {{ message }}
                             </div>
                         {% endfor %}

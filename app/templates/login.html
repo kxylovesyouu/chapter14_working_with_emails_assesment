@@ -13,9 +13,9 @@
             <form action="" method="post" novalidate >
                 {{ form.hidden_tag() }}
                 <p>
-                    <h1 class=" text-center">Login</h1 >
+                    <h1 class=" text-center">Login</h1>
                     {{ form.username.label }} <br>
-                    {{ form.username(size=32)}}<br>
+                    {{ form.username(size=45)}}<br>
                     {% for error in form.username.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -26,7 +26,7 @@
              
                 <p>
                     {{ form.password.label }} <br>
-                    {{ form.password(size=32)}}<br>
+                    {{ form.password(size=45)}}<br>
                     {% for error in form.password.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -35,9 +35,7 @@
                     
                 </p>
              
-                <p>
-                  <p> New Here? <a href="{{ url_for ('register') }}">Register Now</a></p> 
-                </p>
+                
                 <p>
                     {{ form.remember_me() }} {{ form.remember_me.label}}            
                 </p>
@@ -49,7 +47,7 @@
              
                 
                 <p>
-                    {{ form.submit() }}
+                    {{ form.submit(class_="button"  ) }}
                 </p>
             </form>
             <div class="text-sm">
@@ -57,6 +55,9 @@
                     Forgot Password?
                     <a href="{{url_for('request_password_reset')}}"> Reset Here</a>
                 </p>
+                <p>
+                    <p> New Here? <a href="{{ url_for ('register') }}">Register Now</a></p> 
+                  </p>
             </div>
               
         </div>

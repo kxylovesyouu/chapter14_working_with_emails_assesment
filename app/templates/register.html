@@ -7,13 +7,12 @@
     </div>
    
         <div class="col-md-4 great">
-            <img src="{{url_for('static', filename='images/login_image.jpg')}}" mode="crop", width=520, height=300, enlarge=True/>
-            <h5>Register</h5>
+            <h1>Register</h1>
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
                 <p>
                     {{ form.username.label }} <br>
-                    {{ form.username(size=32)}}<br>
+                    {{ form.username(size=45)}}<br>
                     {% for error in form.username.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -23,7 +22,7 @@
                 </p>
                 <p>
                     {{ form.email.label }} <br>
-                    {{ form.email(size=32)}}<br>
+                    {{ form.email(size=45)}}<br>
                     {% for error in form.email.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -34,7 +33,7 @@
                
                 <p>
                     {{ form.password.label }} <br>
-                    {{ form.password(size=32)}}<br>
+                    {{ form.password(size=45)}}<br>
                     {% for error in form.password.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -44,7 +43,7 @@
                 </p>
                 <p>
                     {{ form.confirm_password.label }} <br>
-                    {{ form.confirm_password(size=32)}}<br>
+                    {{ form.confirm_password(size=45)}}<br>
                     {% for error in form.confirm_password.errors %}
                     <span style="color: red;">
                         {{ error }}
@@ -55,8 +54,16 @@
             
                 
                 <p>
-                    {{ form.submit() }}
+                    {{ form.submit(class_="button") }}
                 </p>
+
+                <p>
+                    <p>Forgot Password?
+                    <a href="{{url_for('request_password_reset')}}"> Reset Here</a>
+                </p>
+                <p>
+                    <p>Returning?<a href="{{ url_for ('login') }}">Log In Here</a></p> 
+                  </p>
             </form>
         </div>
         </div>
